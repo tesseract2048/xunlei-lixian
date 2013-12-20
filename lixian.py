@@ -334,7 +334,7 @@ class XunleiClient(object):
 			return False
 		#print self.urlopen('http://dynamic.cloud.vip.xunlei.com/user_task?userid=%s&st=0' % id).read().decode('utf-8')
 		with self.attr(page_size=1):
-			url = 'http://dynamic.cloud.vip.xunlei.com/user_task?userid=%s&st=0' % id
+			url = 'http://dynamic.cloud.vip.xunlei.com/user_task?userid=%s&st=4' % id
 			#url = 'http://dynamic.lixian.vip.xunlei.com/login?cachetime=%d' % current_timestamp()
 			r = self.is_login_ok(self.urlread(url))
 			return r
@@ -625,6 +625,8 @@ class XunleiClient(object):
 			cid, gcid, size_required, filename, goldbean_need, silverbean_need, is_full, random, ext = qcid
 		elif len(qcid) == 10:
 			cid, gcid, size_required, some_key, filename, goldbean_need, silverbean_need, is_full, random, ext = qcid
+		elif len(qcid) == 11:
+			cid, gcid, size_required, some_key, filename, goldbean_need, silverbean_need, is_full, random, ext, filetype = qcid
 		else:
 			raise NotImplementedError(qcid)
 		assert goldbean_need == 0
